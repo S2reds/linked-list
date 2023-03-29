@@ -7,11 +7,11 @@ export default function linkedList() {
     }
     const tail = () => {
         if (!headlist.val) return;
-        let current = headlist
-        while (current.next !== null) {
-            current = current.next
+        let temp = headlist
+        while (temp.next !== null) {
+            temp = temp.next
         }
-        return current
+        return temp
     }
     const append = (val) => {
         const newNode = node(val);
@@ -98,6 +98,12 @@ export default function linkedList() {
         newNode.next = temp
         insertIndex.next = newNode
     }
+    const removeAt = (i) => {
+        let removeIndex = at(i)
+        let beforeIndex = at(i-1)
+        let temp = removeIndex.next
+        beforeIndex.next = temp
+    }
     return {
         append,
         head,
@@ -109,6 +115,7 @@ export default function linkedList() {
         contains,
         find,
         toString,
-        insertAt
+        insertAt,
+        removeAt
     }
 }
